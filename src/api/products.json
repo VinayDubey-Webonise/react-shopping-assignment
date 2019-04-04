@@ -1,0 +1,5 @@
+[
+  {"id": 1, "name": "MacBook Pro 2019", "amount": 25000, "quantity": 2000},
+  {"id": 2, "name": "Hp Spectre 2019", "amount": 356, "quantity": 100000},
+  {"id": 3, "name": "Dell Xperon", "amount": 45, "quantity": 50000}
+]
