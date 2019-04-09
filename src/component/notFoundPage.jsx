@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-class ProductHeader extends Component {
+class NotFound extends Component {
   state = {  }
   render() { 
     return ( 
-      <h2>Shopping Chunk</h2>
+      <h2>404 Page not found</h2>
      );
   }
 }
  
-export default ProductHeader;
+export default NotFound;
