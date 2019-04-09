@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Axios from 'axios';
 import CartProductList from './cartProductList';
 import _ from 'lodash';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import PlaceOrder from './placeOrder';
 
 class Cart extends Component {
@@ -39,7 +38,8 @@ class Cart extends Component {
   removeFromCart(item, updatedQuantity) {
     if(updatedQuantity === 0) {
       this.removeWholeItem(item);
-    }else {
+    }
+    else {
       this.updatedItemQuantity(item, updatedQuantity);
     }
   }
@@ -77,15 +77,34 @@ class Cart extends Component {
     }
   }
 
+  cartProduct() {
+    const cartPareneView = <React.Fragment><CartProductList cartProductData={ this.state.cartItem }
+            removeFromCart={ (item, updatedQuantity) => this.removeFromCart(item, updatedQuantity) } 
+            increaseItemQuantity={ (item, updatedQuantity) => this.increaseItemQuantity(item, updatedQuantity) } />
+            <PlaceOrder submitUrl={ this.handleSubmit } /></React.Fragment> ; 
+
+    return this.state.isLoading ?  <h2>Loading...</h2> : cartPareneView;
+  }
+
+  isCartEmpty() {
+    this.state.cartItem.length <= 0 ? "Cart is lonely..." : null;
+  }
+
   render() { 
-    const cartProduct = this.state.isLoading ?  <h2>Loading...</h2> : <CartProductList cartProductData={ this.state.cartItem } removeFromCart={ (item, updatedQuantity) => this.removeFromCart(item, updatedQuantity) } increaseItemQuantity={ (item, updatedQuantity) => this.increaseItemQuantity(item, updatedQuantity) } /> ; 
     return ( 
         <div className="container">
           <h3>Cart List</h3>
-          <hr />
-            <h3><center>{ this.state.cartItem.length <= 0 ? "Cart is lonely..." : null }</center></h3>
-            { cartProduct }
-          <PlaceOrder submitUrl={ this.handleSubmit } />
+          <hr/>
+          <h3>
+            <center>
+              {
+                this.isCartEmpty
+              }
+            </center>
+          </h3>
+          {
+            this.cartProduct
+          }
         </div>
      );
   }
