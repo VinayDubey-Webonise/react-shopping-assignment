@@ -64,12 +64,17 @@ class Cart extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    Axios.post('http://demo5707519.mockable.io/place_order', JSON.stringify(this.state.cartIds)).then(
-      res => {
-        console.log(res);
-        this.props.history.push(`/order_placed`);
-      }
-    );
+    if(this.state.cartItem.length <= 0) {
+      alert("Add some item in the cart");
+    }
+    else {
+      Axios.post('http://demo5707519.mockable.io/place_order', JSON.stringify(this.state.cartIds)).then(
+        res => {
+          console.log(res);
+          this.props.history.push(`/order_placed`);
+        }
+      );
+    }
   }
 
   render() { 
