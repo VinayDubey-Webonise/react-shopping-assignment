@@ -1,12 +1,10 @@
 import React from 'react';
 import CartProductItem from './cartProductItem';
+import PropTypes from 'prop-types';
 
-const mappedData = props.cartProductData.map((item) => 
-                  <CartProductItem key={item.id} cartProductDataItem={ item } 
-                  removeFromCart={ props.removeFromCart } increaseItemQuantity={ props.increaseItemQuantity } />);
-                  
 function CartProductList(props) {
-  return ( 
+  const mappedData = props.cartProductData.map((item) => <CartProductItem key={item.id} cartProductDataItem={ item } removeFromCart={ props.removeFromCart } increaseItemQuantity={ props.increaseItemQuantity } />);
+  return (
     <div>
       {
         mappedData
@@ -14,3 +12,11 @@ function CartProductList(props) {
     </div>
   );
 }
+
+CartProductList.propTypes = {
+  cartProductData: PropTypes.array,
+  increaseItemQuantity: PropTypes.func,
+  removeFromCart: PropTypes.func
+};
+
+export default CartProductList;

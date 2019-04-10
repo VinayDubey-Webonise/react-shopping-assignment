@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-function NotFound(props) {
+export default function NotFound() {
   return ( 
     <h2>404 Page not found</h2>
   );

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-function OrderPlaced() {
+export default function OrderPlaced() {
     return ( 
         <h2>
             <center>

@@ -3,7 +3,6 @@ import './App.css';
 import ProductList from './component/productList';
 import ProductCheckout from './component/productCheckout';
 import Axios from 'axios';
-//import _ from 'lodash';
 
 class App extends Component {
   constructor() {
@@ -50,12 +49,17 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    Axios.post('http://demo5707519.mockable.io/add_to_cart', JSON.stringify(this.state.cartIds)).then(
-      res => {
-        console.log(res);
-        this.props.history.push(`/cart`);
-      }
-    );
+    if(this.state.cartItem.length) {
+      Axios.post('http://demo5707519.mockable.io/add_to_cart', JSON.stringify(this.state.cartIds)).then(
+        res => {
+          console.log(res);
+          this.props.history.push(`/cart`);
+        }
+      );
+    }
+    else {
+      alert("No item added to cart");
+    }
   }
 
   disableButton(productId) {
@@ -65,14 +69,16 @@ class App extends Component {
   render() {
     const proList =<div>
         <ProductList productData={ this.state.products } cartCallback={ (cartItem) => this.addToCart(cartItem) } disableButton={ (productId) => this.disableButton(productId) } />
-        <ProductCheckout submitUrl={ this.handleSubmit }/> 
         <span>Total Item in Cart : { this.state.cartItem.length }</span>
+        <ProductCheckout submitUrl={ this.handleSubmit }/>
         </div>;
-    const cartProduct = this.state.isLoading ? <h2>Loading...</h2> : proList; 
-    
+    const cartProduct = this.state.isLoading ? <h2>Loading...</h2> : proList;
+
     return (
       <div className="App">
-        { cartProduct }
+        { 
+          cartProduct 
+        }
       </div>
     );
   }

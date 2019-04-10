@@ -22,5 +22,3 @@ class Main extends Component {
 }
  
 export default Main;
-
-//<Route path="/move" exact component={MoveIndexComponent} />

@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class ProductCheckout extends Component {
-
-  render() { 
-    return (
-      <form onSubmit={ this.props.submitUrl }>
-        <input type="submit" value="Submit"/>
-      </form>
-     );
-  }
+function ProductCheckout(props) {
+  return (
+    <form onSubmit={ props.submitUrl }>
+      <input type="submit" value="Submit"/>
+    </form>
+    );
 }
- 
+
+ProductCheckout.propTypes = {
+  submitUrl: PropTypes.func
+};
+
 export default ProductCheckout;
