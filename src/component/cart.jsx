@@ -73,15 +73,18 @@ class Cart extends Component {
   }
 
   render() { 
-    const cartProduct = this.state.isLoading ?  <h2>Loading...</h2> : <CartProductList cartProductData={ this.state.cartItem } removeFromCart={ (item, updatedQuantity) => this.removeFromCart(item, updatedQuantity) } increaseItemQuantity={ (item, updatedQuantity) => this.increaseItemQuantity(item, updatedQuantity) } /> ; 
+    const cartProduct = this.state.isLoading ?  <h2>Loading...</h2> : 
+                        <div><CartProductList cartProductData={ this.state.cartItem } 
+                        removeFromCart={ (item, updatedQuantity) => this.removeFromCart(item, updatedQuantity) } 
+                        increaseItemQuantity={ (item, updatedQuantity) => this.increaseItemQuantity(item, updatedQuantity) } />
+                        <PlaceOrder submitUrl={ this.handleSubmit } /></div>; 
     return ( 
         <div className="container">
           <h3>Cart List</h3>
           <hr />
             { 
               cartProduct 
-            }
-          <PlaceOrder submitUrl={ this.handleSubmit } />
+            }          
         </div>
      );
   }
