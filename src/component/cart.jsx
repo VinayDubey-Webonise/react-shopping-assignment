@@ -4,6 +4,7 @@ import CartProductList from './cartProductList';
 import _ from 'lodash';
 import 'bootstrap/dist/css/bootstrap.css';
 import PlaceOrder from './placeOrder';
+import { connect } from 'react-redux';
 
 class Cart extends Component {
   constructor() {
@@ -21,6 +22,12 @@ class Cart extends Component {
         isLoading : false,
         cartItem : response.data
       });
+
+      this.props.dispatch({
+        type: 'ADD_INITIAL_PRODUCT_DATA',
+        cartItem : response.data
+      });
+      
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error);
@@ -95,5 +102,5 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+export default connect()(Cart);
  

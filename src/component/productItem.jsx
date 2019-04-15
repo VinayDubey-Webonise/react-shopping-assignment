@@ -11,7 +11,7 @@ class ProductItem extends Component {
   }
 
   addItemToCart() {
-    this.props.cartCallback(this.props.productDataItem.id);
+    this.props.cartCallback(this.props.productDataItem);
     this.setState({
       isButtonDisable : true
     });

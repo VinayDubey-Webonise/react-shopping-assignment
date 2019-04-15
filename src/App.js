@@ -3,6 +3,7 @@ import './App.css';
 import ProductList from './component/productList';
 import ProductCheckout from './component/productCheckout';
 import Axios from 'axios';
+import { connect } from 'react-redux';
 
 class App extends Component {
   constructor() {
@@ -15,15 +16,24 @@ class App extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteFromCart = this.deleteFromCart.bind(this);
     this.disableButton = this.disableButton.bind(this);
+    this.setInitialDataToStore = this.setInitialDataToStore.bind(this);
+  }
+
+  setInitialDataToStore(data) {
+    console.log(data);
+    this.props.dispatch({
+      type: 'ADD_INITIAL_PRODUCT_DATA',
+      products: data
+    });
   }
 
   componentDidMount() {
     Axios.get('http://demo5707519.mockable.io/products').then(response => {
-      this.setState({
-        isLoading : false,
-        products : response.data
-      });
-      console.log(response.data);
+      // this.setState({
+      //   isLoading : false,
+      //   products : response.data
+      // });
+      this.setInitialDataToStore(response.data);
     })
     .catch(error => {
       console.log('Error fetching and parsing data', error);
@@ -85,4 +95,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    productStoreData: state
+  }
+}
+
+export default connect()(App);
