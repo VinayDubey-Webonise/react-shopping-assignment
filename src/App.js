@@ -3,6 +3,7 @@ import './App.css';
 import ProductList from './component/productList';
 import Axios from 'axios';
 import { connect } from 'react-redux';
+import Navabar from './component/navbar/navbar';
 
 class App extends Component {
   constructor() {
@@ -68,6 +69,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <Navabar />
         { 
           cartProduct 
         }

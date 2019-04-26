@@ -7,8 +7,9 @@ import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import cartReducer from './reducers/cartReducer';
 import productReducer from './reducers/productReducer';
+import authReducer from './reducers/authReducer';
 
-const store = createStore(combineReducers({cartReducer, productReducer}));
+const store = createStore(combineReducers({cartReducer, productReducer, authReducer}));
 
 ReactDOM.render(
 <Provider store={ store }>

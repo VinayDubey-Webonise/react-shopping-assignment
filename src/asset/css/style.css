@@ -5,3 +5,16 @@ div.inline {
 ul.removeDecoration {
   list-style-type: none;
 }
+
+body, html {
+  height: 100%;
+}
+/* .bg {
+  background-image: url("../image/homepage_bg.jpg");
+
+  height: 100%;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
