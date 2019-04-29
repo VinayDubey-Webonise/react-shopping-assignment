@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
+//import '../cart/node_modules/bootstrap/dist/css/bootstrap.css';
 import Axios from 'axios';
 import Navbar from '../navbar/navbar';
 import { connect } from 'react-redux';

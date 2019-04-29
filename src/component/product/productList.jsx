@@ -26,6 +26,7 @@ class ProductList extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    console.log("all: ", this.state);
     if(this.state.cartItem.length) {
       Axios.post('http://demo5707519.mockable.io/add_to_cart', JSON.stringify(this.state.cartIds)).then(
         res => {
@@ -44,14 +45,13 @@ class ProductList extends Component {
   }  
 
   render() { 
-    console.log(this.props.productDataStore[0]);
+    console.log("product list: ", this.props.productDataStore[0]);
+    console.log("products: ", this.props.productDataStore);
     const mappedData = this.props.productDataStore[0].map((item) => <ProductItem key={item.id} 
                     productDataItem={ item } cartCallback={ this.addToCart } 
                     disableButton={ this.disableButton } />);
     return (  
       <div>
-        <h3>Product List</h3>
-        <hr />
         { 
           mappedData  
         }
@@ -75,4 +75,3 @@ ProductList.propTypes = {
 };
 
 export default connect(mapStateToProps)(ProductList);
-

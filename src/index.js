@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './Main';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
@@ -13,7 +13,7 @@ const store = createStore(combineReducers({cartReducer, productReducer, authRedu
 
 ReactDOM.render(
 <Provider store={ store }>
-  <Main />
+  <App />
 </Provider>
 , document.getElementById('root'));
 
